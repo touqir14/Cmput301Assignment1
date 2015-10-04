@@ -1,0 +1,52 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="110dp"
+        android:text="@string/ReactionTimerButton"
+        android:id="@+id/ReactionTimer"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="getReactionTimer"
+        />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="110dp"
+        android:text="@string/GameshowBuzzerButton"
+        android:id="@+id/GameshowBuzzer"
+        android:layout_below="@+id/ReactionTimer"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="getGameShowBuzzer"
+        />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="fill_parent"
+        android:layout_height="110dp"
+        android:text="@string/StatisticsButton"
+        android:id="@+id/Statistics"
+        android:layout_below="@+id/GameshowBuzzer"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="getStatistics"
+        />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:text="@string/ExitButton"
+        android:id="@+id/ExitButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="41dp"
+        android:onClick="terminate"
+        />
+</RelativeLayout>

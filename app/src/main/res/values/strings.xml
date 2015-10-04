@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">touqir-reflex</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="ReactionTimerButton">Reaction Timer Mode</string>
+    <string name="GameshowBuzzerButton">Gameshow Buzzer Mode</string>
+    <string name="StatisticsButton">View Statistics</string>
+    <string name="ExitButton">Exit</string>
+    <string name="title_activity_reaction_timer">ReactionTimer</string>
+    <string name="title_activity_game_show_buzzer">GameShowBuzzer</string>
+    <string name="title_activity_game_show_buzzer2">GameShowBuzzer2</string>
+    <string name="title_activity_statistics">Statistics</string>
+    <string name="title_activity_email_page">EmailPage</string>
+</resources>

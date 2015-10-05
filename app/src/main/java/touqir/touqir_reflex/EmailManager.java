@@ -35,7 +35,6 @@ public class EmailManager {
 
         EditText emailField= (EditText) myActivity.findViewById(R.id.InputEmailID);
         emailAddress=emailField.getText().toString().split(" ");
-        //Log.e("email_________",emailAddress);
         sendEmail(emailTextBody);
     }
 

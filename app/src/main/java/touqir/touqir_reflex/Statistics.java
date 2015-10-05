@@ -49,30 +49,7 @@ public class Statistics extends AppCompatActivity {
         myStats.initAdapters();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_statistics, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-
-    public void toEmailActivityHandler(View view) {
+    public void toEmailActivityHandler(View view) { //Switches to emailActivity page.
         emailTextBody = myStats.getDataAsEmailTextBody();
         Intent toChild= new Intent(this, EmailPage.class);
         toChild.putExtra(emailTextKey,emailTextBody);
@@ -80,12 +57,10 @@ public class Statistics extends AppCompatActivity {
     }
 
     public void deleteBuzzerDataHandler(View view) {
-
         myStats.deleteBuzzerData();
     }
 
     public void deleteReactionDataHandler(View view) {
-
         myStats.deleteReactionData();
     }
 }

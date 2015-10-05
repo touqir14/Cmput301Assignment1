@@ -5,7 +5,7 @@ import touqir.touqir_reflex.Passable;
 /**
  * Created by touqir on 26/09/15.
  */
-public class ReactionT_DialogIntro<activityClass> extends ReactionT_Dialog<activityClass> {
+public class ReactionT_DialogIntro<activityClass> extends MyBasicDialog<activityClass> {
 
     private String introMessage = "Wait for the 'click me' text to turn black and instantly click on it to measure your Reflex performance!";
     private String positiveText = "Continue", negativeText = "Go Back";

@@ -20,7 +20,6 @@ import touqir.touqir_reflex.Dialog.ReactionT_DialogLater;
 public class ReactionTimerMode {
 
     private ReactionTimerActivity  hostActivity;
-    private Button button;
     private boolean pressedEarly, firstTime=true;
     private long latency;
     private int clickMeColour;
@@ -28,7 +27,6 @@ public class ReactionTimerMode {
     private View.OnClickListener listenerLater;
     private MyClickMe<ReactionTimerActivity> clickMe;
     private RelativeLayout relativeLayout;
-    private Timer timer;
     private ReactionT_DialogEarly<ReactionTimerActivity> dialogEarly;
     private ReactionT_DialogLater<ReactionTimerActivity> dialogLater;
     private ReactionT_DialogIntro<ReactionTimerActivity> dialogIntro;

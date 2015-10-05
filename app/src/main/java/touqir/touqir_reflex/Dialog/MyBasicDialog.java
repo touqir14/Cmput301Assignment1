@@ -8,12 +8,12 @@ import touqir.touqir_reflex.Passable;
  * Created by touqir on 26/09/15.
  */
 
-public class ReactionT_Dialog<activityClass> extends Dialog_YesNo<activityClass> {
+public class MyBasicDialog<activityClass> extends Dialog_YesNo<activityClass> {
 
 //    private String earlyMessage="Clicked too early! Want to try again?";
     private Passable positiveBehaviourInvoker, negativeBehaviourInvoker;
 
-    public ReactionT_Dialog(activityClass activity, Passable positiveBehaviour, Passable negativeBehaviour) {
+    public MyBasicDialog(activityClass activity, Passable positiveBehaviour, Passable negativeBehaviour) {
 
         super(activity);
         setPositiveBehaviourInvoker(positiveBehaviour);

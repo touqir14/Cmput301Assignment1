@@ -5,7 +5,7 @@ import touqir.touqir_reflex.Passable;
 /**
  * Created by touqir on 26/09/15.
  */
-public class ReactionT_DialogLater<activityClass> extends ReactionT_Dialog<activityClass> {
+public class ReactionT_DialogLater<activityClass> extends MyBasicDialog<activityClass> {
 
     private String LaterMessage = "You clicked late by ";
     private String positiveText = "Restart", negativeText = "Quit";

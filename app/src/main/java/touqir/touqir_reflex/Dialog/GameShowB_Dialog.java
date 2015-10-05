@@ -5,7 +5,7 @@ import touqir.touqir_reflex.Passable;
 /**
  * Created by touqir on 28/09/15.
  */
-public class GameShowB_Dialog<activityClass> extends ReactionT_Dialog<activityClass> {
+public class GameShowB_Dialog<activityClass> extends MyBasicDialog<activityClass> {
 
     private String MessagePart1="Player ", MessagePart2=" pressed first.Press Restart when you are ready for next round";
     private String positiveButton="Restart",negativeButton="Quit";
@@ -18,6 +18,4 @@ public class GameShowB_Dialog<activityClass> extends ReactionT_Dialog<activityCl
         setNegativeText(negativeButton);
         initDialog();
     }
-
-
 }

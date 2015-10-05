@@ -6,7 +6,7 @@ import touqir.touqir_reflex.Passable;
  * Created by touqir on 26/09/15.
  */
 
-public class ReactionT_DialogEarly<activityClass> extends ReactionT_Dialog<activityClass> {
+public class ReactionT_DialogEarly<activityClass> extends MyBasicDialog<activityClass> {
 
     private String earlyMessage="Clicked too early! Want to try again?";
 

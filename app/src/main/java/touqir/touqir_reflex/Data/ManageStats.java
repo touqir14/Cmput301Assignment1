@@ -55,19 +55,21 @@ public class ManageStats {
             return;
         }
         Integer totalLatencies = (Integer) reactionData.get(0);
-        String maxAll = maxTime + allTime + ((Long) reactionData.get(1)).toString()+milli;
-        String minAll = minTime + allTime + ((Long) reactionData.get(2)).toString()+milli;
-        reactionLatencies.add(maxAll);
-        reactionLatencies.add(minAll);
 
         if (totalLatencies > 0) {
             String averageAll = avgTime + allTime + ((Double) reactionData.get(3)).toString()+milli;
             reactionLatencies.add(averageAll);
         }
+
         if (totalLatencies > 1) {
             String medianAll = medTime + allTime + ((Double) reactionData.get(4)).toString()+milli;
             reactionLatencies.add(medianAll);
+            String maxAll = maxTime + allTime + ((Long) reactionData.get(1)).toString()+milli;
+            String minAll = minTime + allTime + ((Long) reactionData.get(2)).toString()+milli;
+            reactionLatencies.add(maxAll);
+            reactionLatencies.add(minAll);
         }
+
         if (totalLatencies < 10){
             return;
         }

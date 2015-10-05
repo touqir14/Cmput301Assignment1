@@ -58,27 +58,17 @@ public class DataIO<DataClass> {
             FileInputStream fis = context.openFileInput(FILENAME);
             BufferedReader in = new BufferedReader(new InputStreamReader(fis));
             Gson gson = new Gson();
-            Type listType = new TypeToken<DataWrapper<DataClass>>(){}.getType(); //use an overriding function somewhere here. Or you can use generics perhaps...
+            Type listType = new TypeToken<DataWrapper<DataClass>>(){}.getType();
             myDataWrapper = gson.fromJson(in, listType);
-//            dataList.add((DataClass) new Long(3));
             dataList=myDataWrapper.getMyData(dataClassType);
-            Integer size=dataList.size();
-            Log.e("From DataIO, type of loadedData", size.toString());
+            //Log.e("From DataIO, type of loadedData", size.toString());
 
         } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            //throw new RuntimeException(e);
-//            dataList= new ArrayList<DataClass>();
-//            dataList.add((DataClass)new Long(4));
-//            Log.e("From DataIO, type of loadedData", dataList.get(0).getClass().toString());
-//            throw new RuntimeException("gottttt");
             return new ArrayList<DataClass>();
 
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             throw new RuntimeException(e);
         }
-
         return dataList;
     }
 
@@ -123,91 +113,5 @@ public class DataIO<DataClass> {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public class DataWrapper<DataClass>{
-        private ArrayList<Object> myData;
-
-        public DataWrapper(Class dataClassType,ArrayList<Object> toSave) {
-            switch (getType(dataClassType)) {
-                case 0:
-                    myData=toSave;
-                    return;
-                case 1://Incase of Long
-                    myData = wrapLong(toSave);
-                    return;
-                case 2://Incase of Array<Integer>
-                    myData = wrapInteger(toSave);
-                    return;
-            }
-        }
-
-        public ArrayList<Object> wrapLong(ArrayList<Object> data){
-            return storeLongToDoubleArrayList(data);
-        }
-
-        public ArrayList<Object> wrapInteger(ArrayList<Object> data){
-            return storeIntegerToDoubleArrayList(data);
-        }
-
-        private ArrayList<Object> storeIntegerToDoubleArrayList(ArrayList<Object> data) {
-            ArrayList<Object> myDoubleArray= new ArrayList<Object>();
-            for (Object datum: data){
-                Integer temporary_data= (Integer) datum;
-                myDoubleArray.add(temporary_data.doubleValue());
-            }
-            return myDoubleArray;
-        }
-
-        private ArrayList<Object> loadDoubleToIntegerArrayList(ArrayList<Object> data) {
-            ArrayList<Object> myIntegerArray= new ArrayList<Object>();
-            for (Object datum: data){
-                Double temporary_data=(Double) datum;
-                myIntegerArray.add(temporary_data.intValue());
-            }
-            return myIntegerArray;
-        }
-
-        private ArrayList<Object> storeLongToDoubleArrayList(ArrayList<Object> data){
-            ArrayList<Object> myDoubleArray= new ArrayList<Object>();
-            for (Object datum: data){
-                Long temporary_data= (Long) datum;
-                myDoubleArray.add(temporary_data.doubleValue());
-            }
-            return myDoubleArray;
-        }
-
-        private ArrayList<Object> loadDoubleToLongArrayList(ArrayList<Object> data){
-            ArrayList<Object> myLongArray= new ArrayList<Object>();
-            for (Object datum: data){
-                Double temporary_data=(Double) datum;
-                myLongArray.add(temporary_data.longValue());
-            }
-            return myLongArray;
-        }
-
-        public ArrayList<DataClass> getMyData(Class outputClassType){
-            switch (getType(outputClassType)){
-                case 0:
-                return (ArrayList<DataClass>) myData;
-
-                case 1:
-                return (ArrayList<DataClass>)loadDoubleToLongArrayList(myData);
-
-                case 2:
-                return (ArrayList<DataClass>)loadDoubleToIntegerArrayList(myData);
-            }
-            return (ArrayList<DataClass>) myData;
-        }
-
-        private int getType(Class dataClassType){
-            if (dataClassType==Long.class){
-                return 1;
-            }
-            if (dataClassType==Integer.class){
-                return 2;
-            }
-            return 0;
-        }
-
-    }
 
 }

@@ -16,7 +16,6 @@ public class Dialog_YesNo<activityClass> {
     private AlertDialog dialog;
 
     public Dialog_YesNo(activityClass activity) {
-
         this.parentActivity=activity;
         positiveText = "Yes";
         negativeText = "No";
@@ -28,22 +27,27 @@ public class Dialog_YesNo<activityClass> {
     }
 
     void setMessage(String Message){
-        // Add exception based checking on the string
+        if (Message.length()>150) {
+            throw new RuntimeException("Dialog text is too long");
+        }
         this.message=Message;
     }
 
     void setPositiveText(String text){
-        //Add exception
+        if (text.length()>20) {
+            throw new RuntimeException("button text is too long");
+        }
         positiveText=text;
     }
 
     void setNegativeText(String text){
-        //Add exception
+        if (text.length()>20) {
+            throw new RuntimeException("button text is too long");
+        }
         negativeText=text;
     }
 
     void setCancelable(Boolean Cancelable) {
-
         this.cancelable=Cancelable;
     }
 
@@ -55,11 +59,10 @@ public class Dialog_YesNo<activityClass> {
 
     }
 
-    void createDialogBoxProperties(){
+    public void createDialogBoxProperties(){
 
         if (createdBuilder==false){
-            //raise exception
-            /////////////
+            throw new RuntimeException("Dialog Box Builder(dialogBuilder) object is not created!");
         }
         dialogBuilder
                 .setMessage(this.message)
@@ -68,14 +71,12 @@ public class Dialog_YesNo<activityClass> {
                     public void onClick(DialogInterface dialog,int id) {
 
                         positiveBehaviour(dialog);
-
                     }
                 })
                 .setNegativeButton(negativeText, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,int id) {
 
                         negativeBehaviour(dialog);
-
                     }
                 });
 
@@ -83,31 +84,22 @@ public class Dialog_YesNo<activityClass> {
     }
 
 
-    void createDialog(){
+    public void createDialog(){
 
         if (createdProperties==false) {
-            //raise exception
-            //////////
+            throw new RuntimeException("First setup Dialog Box Properties!");
         }
-
         dialog=dialogBuilder.create();
-        createdBuilder=true;
-
+        createdDialog=true;
     }
 
 
     public void showDialog(){
 
         if (createdDialog==false) {
-            //raise exception
-            /////////
+            throw new RuntimeException("First create Dialog and then call this method to show it");
         }
-
         dialog.show();
-
     }
-
-
-
 }
 

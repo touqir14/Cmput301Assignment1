@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getGameShowBuzzer(View view) {
-        Intent gameShowBuzzer1= new Intent(this, GameShowBuzzer1.class);
+        Intent gameShowBuzzer1= new Intent(this, GameShowBuzzerPage1.class);
         //Anything
         startActivity(gameShowBuzzer1);
     }

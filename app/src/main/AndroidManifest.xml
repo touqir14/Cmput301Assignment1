@@ -25,7 +25,7 @@
                 android:value="touqir.touqir_reflex.MainActivity" />
         </activity>
         <activity
-            android:name=".GameShowBuzzer1"
+            android:name=".GameShowBuzzerPage1"
             android:label="@string/title_activity_game_show_buzzer"
             android:parentActivityName=".MainActivity" >
             <meta-data
@@ -33,12 +33,12 @@
                 android:value="touqir.touqir_reflex.MainActivity" />
         </activity>
         <activity
-            android:name=".GameShowBuzzer2"
+            android:name=".GameShowBuzzerPage2"
             android:label="@string/title_activity_game_show_buzzer2"
-            android:parentActivityName=".GameShowBuzzer1" >
+            android:parentActivityName=".GameShowBuzzerPage1" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="touqir.touqir_reflex.GameShowBuzzer1" />
+                android:value=".GameShowBuzzerPage1" />
         </activity>
         <activity
             android:name=".Statistics"

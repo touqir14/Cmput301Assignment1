@@ -24,7 +24,7 @@
         android:id="@+id/ClickToMail"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:onClick="emailButtonHandler"
+        android:onClick="callEmailButtonHandler"
         />
 
 </RelativeLayout>

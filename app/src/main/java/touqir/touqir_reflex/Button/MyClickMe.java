@@ -14,8 +14,6 @@ import touqir.touqir_reflex.Passable;
  */
 public class MyClickMe<contextClass> extends MyButton<contextClass> implements ClickMe {
 
-
-
     private int listenerEarlyIndex, listenerLaterIndex;
     private ArrayList<Integer> rules= new ArrayList<Integer>(Arrays.asList(RelativeLayout.CENTER_IN_PARENT));
     private Integer gravity=null;
@@ -23,36 +21,29 @@ public class MyClickMe<contextClass> extends MyButton<contextClass> implements C
     private String buttonText="Click Me";
 
     public MyClickMe(LinearLayout layout, contextClass context) {
-
         super(layout, context, matchParent, wrapContent);
     }
 
     public MyClickMe(RelativeLayout layout, contextClass context) {
-
         super(layout, context, matchParent, wrapContent);
     }
 
     @Override
     public void createMe(){
-        //First ListenerEarly must be set before calling this method using setListenerEarly.
         setSize(textSize);
         setText(buttonText);
         setLayoutProperties(rules, gravity);
         addToLayout();
         activateClickMeEarly();
-
     }
 
     @Override
     public void setListenerEarly(Passable passed){
-
         listenerEarlyIndex=addOnClickListener(passed);
-
     }
 
     @Override
     public void setListenerLater(Passable passed){
-
         listenerLaterIndex=addOnClickListener(passed);
     }
 
@@ -68,7 +59,6 @@ public class MyClickMe<contextClass> extends MyButton<contextClass> implements C
     public void activateClickMeEarly(){
         setTextColor("white");
         activateListenerEarly();
-
     }
 
     @Override

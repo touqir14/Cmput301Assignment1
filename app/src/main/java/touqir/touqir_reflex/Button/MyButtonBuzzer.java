@@ -16,7 +16,6 @@ import touqir.touqir_reflex.Passable;
  */
 public class MyButtonBuzzer<contextClass> {
 
-    //private ArrayList<Integer> rules= new ArrayList<Integer>();//Need to modify this
     private ArrayList<Integer> rules=null;
     private Context context;
     private RelativeLayout rLayout;
@@ -30,7 +29,6 @@ public class MyButtonBuzzer<contextClass> {
         this.rLayout= relativeLayout;
         this.playerNumber=playerNumber;
         createButtons();
-
     }
 
     private void createButtons(){
@@ -47,7 +45,6 @@ public class MyButtonBuzzer<contextClass> {
         button.setID(View.generateViewId());
         if (index>0){
             int prevButtonID=buttons.get(buttons.size()-1).getID();
-            Log.e("1stbuttonID",Integer.toString(prevButtonID));
             button.addRule(RelativeLayout.BELOW, prevButtonID);
         }
         else {
@@ -71,6 +68,4 @@ public class MyButtonBuzzer<contextClass> {
         MyButton button=buttons.get(index);
         button.setOnClickListener();
     }
-
-
 }

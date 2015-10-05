@@ -30,7 +30,6 @@ public class MyButton<contextClass> {
     public static final int matchParent=-1;
     public static final int wrapContent=-2;
     private boolean staticButton;
-    private int myID;
     private RelativeLayout.LayoutParams relativeLayoutParams;
     private LinearLayout.LayoutParams linearLayoutParams;
 
@@ -119,7 +118,7 @@ public class MyButton<contextClass> {
         }
 
         if (text.length()>20){
-            throw new RuntimeException("button name is too big");
+            throw new RuntimeException("button text is too long");
         }
 
         this.button.setText(text);
@@ -135,7 +134,6 @@ public class MyButton<contextClass> {
 
     public void setTextColor(String color){
 
-        //Add exception for string checking
         if (staticButton==true){
             throw new RuntimeException("This is a static button whose properties cannot be changed");
         }
@@ -143,7 +141,7 @@ public class MyButton<contextClass> {
             int color_code = Color.parseColor(color);
             this.button.setTextColor(color_code);
         } catch (IllegalArgumentException e){
-            Log.e("MyButton","Make sure you gave a valid color", e);
+            Log.e("MyButton","Make sure you give a valid color", e);
             throw new RuntimeException();
         }
     }
@@ -178,9 +176,7 @@ public class MyButton<contextClass> {
     }
 
     public void setOnClickListener(int index) {
-
         button.setOnClickListener(listeners.get(index));
-
     }
 
     public void setOnClickListener() {

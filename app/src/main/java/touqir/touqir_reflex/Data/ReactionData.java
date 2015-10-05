@@ -42,7 +42,7 @@ public class ReactionData {
 
     public void saveLatency(){
         boolean IsLoadFromFile=false;
-        IO_object.saveInFile(IsLoadFromFile,latencies);
+        IO_object.saveInFile(IsLoadFromFile, latencies);
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -74,19 +74,21 @@ public class ReactionData {
             throw new RuntimeException("There is no data to work on");
         }
         int lastIndex = totalElements - 1;
-//        Log.i("Class of latencies[0] :",latencies.get(0).getClass().getName());
-        max.add(findMax(latencies, 0, lastIndex)); //The first index of max is filled with max of all latencies
-
-        if (lastIndex < 10) {
+        if (totalElements<2){
+            max.add(new Long(-1));
+        }   else {
+            max.add(findMax(latencies, 0, lastIndex)); //The first index of max is filled with max of all latencies
+        }
+        if (totalElements < 10) {
             max.add(new Long(-1));
         } else {
-            max.add(findMax(latencies, lastIndex - 10, lastIndex)); //2nd index of max is filled with max of last 10 latencies
+            max.add(findMax(latencies, lastIndex - 9, lastIndex)); //2nd index of max is filled with max of last 10 latencies
         }
 
-        if (lastIndex < 100) {
+        if (totalElements < 100) {
             max.add(new Long(-1));
         } else {
-            max.add(findMax(latencies,lastIndex-100,lastIndex)); //3rd index of max is filled with max of last 100 latencies
+            max.add(findMax(latencies,lastIndex- 99,lastIndex)); //3rd index of max is filled with max of last 100 latencies
         }
     }
 
@@ -97,18 +99,22 @@ public class ReactionData {
             throw new RuntimeException("There is no data to work on");
         }
         int lastIndex = totalElements - 1;
-        min.add(findMin(latencies, 0, lastIndex)); //The first index of min is filled with min of all latencies
-
-        if (lastIndex < 10) {
+        if (totalElements<2){
             min.add(new Long(-1));
-        } else {
-            min.add(findMin(latencies, lastIndex - 10, lastIndex)); //2nd index of min is filled with min of last 10 latencies
+        }   else {
+            min.add(findMin(latencies, 0, lastIndex)); //The first index of min is filled with min of all latencies
         }
 
-        if (lastIndex < 100) {
+        if (totalElements < 10) {
             min.add(new Long(-1));
         } else {
-            min.add(findMin(latencies, lastIndex - 100, lastIndex)); //3rd index of min is filled with min of last 100 latencies
+            min.add(findMin(latencies, lastIndex - 9, lastIndex)); //2nd index of min is filled with min of last 10 latencies
+        }
+
+        if (totalElements < 100) {
+            min.add(new Long(-1));
+        } else {
+            min.add(findMin(latencies, lastIndex - 99, lastIndex)); //3rd index of min is filled with min of last 100 latencies
         }
     }
 
@@ -119,18 +125,23 @@ public class ReactionData {
             throw new RuntimeException("There is no data to work on");
         }
         int lastIndex = totalElements - 1;
-        median.add(findMedian(latencies, 0, lastIndex)); //The first index of median is filled with median of all latencies
-
-        if (lastIndex < 10) {
+        if (totalElements<2){
             median.add(new Double(-1));
-        } else {
-            median.add(findMedian(latencies, lastIndex - 10, lastIndex)); //2nd index of median is filled with median of last 10 latencies
+        }
+        else{
+            median.add(findMedian(latencies, 0, lastIndex)); //The first index of median is filled with median of all latencies
         }
 
-        if (lastIndex < 100) {
+        if (totalElements < 10) {
             median.add(new Double(-1));
         } else {
-            median.add(findMedian(latencies, lastIndex - 100, lastIndex)); //3rd index of median is filled with median of last 100 latencies
+            median.add(findMedian(latencies, lastIndex - 9, lastIndex)); //2nd index of median is filled with median of last 10 latencies
+        }
+
+        if (totalElements < 100) {
+            median.add(new Double(-1));
+        } else {
+            median.add(findMedian(latencies, lastIndex - 99, lastIndex)); //3rd index of median is filled with median of last 100 latencies
         }
     }
 
@@ -143,16 +154,16 @@ public class ReactionData {
         int lastIndex = totalElements - 1;
         average.add(findAverage(latencies, 0, lastIndex)); //The first index of average is filled with average of all latencies
 
-        if (lastIndex < 10) {
+        if (totalElements < 10) {
             average.add(new Double(-1));
         } else {
-            average.add(findAverage(latencies, lastIndex - 10, lastIndex)); //2nd index of average is filled with average of last 10 latencies
+            average.add(findAverage(latencies, lastIndex - 9, lastIndex)); //2nd index of average is filled with average of last 10 latencies
         }
 
-        if (lastIndex < 100) {
+        if (totalElements < 100) {
             average.add(new Double(-1));
         } else {
-            average.add(findAverage(latencies, lastIndex - 100, lastIndex)); //3rd index of average is filled with average of last 100 latencies
+            average.add(findAverage(latencies, lastIndex - 99, lastIndex)); //3rd index of average is filled with average of last 100 latencies
         }
     }
 

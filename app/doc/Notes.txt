@@ -1,0 +1,60 @@
+MainActivity:
+The first activity that pops up when the App is launched. This activity is responsible for further calling any of the other 3 activities which are the UI for the 3 components of this app : Reaction timer, game buzzer mode, statistics display.
+
+
+GameShowBuzzerPage1:
+The first activity class of gameshow user mode which is called from the MainActivity when gameshow buzzer mode button is pressed.
+This class is responsible for selection of the number of players and then sending that information to its child activity which is GameShowBuzzerPage2 class.
+For selecting player number it uses a MyNumberPicker class object which implements the scrollable number picker UI functionality.
+
+GameShowBuzzerPage2:
+The 2nd activity class page of the game show buzzer mode which is called by GameShowBuzzerPage1 and is passed down the information of the number of players to play the game. This class contains a GameShowBuzzerMode class object which basically takes responsibility of the buttons and clicking functionalities made by the players.
+
+GameShowBuzzerMode:
+Responsible for:
+1)managing the buttons that the user clicks. This is inturn done by using MyButtonBuzzer class object which takes the responsibility of creation and displaying of buttons
+
+2)saving the button clicks. This is in turn done by using the BuzzerData class's static method "savaData" for saving.
+
+3)Popping up a dialog telling which player clicked first. Further dialog functionality is implemented inside GameShowB_Dialog class and GameShowBuzzerMode is composed of it.
+
+It's commonButtonHandler method is called by a click to any one of the buttons. This made then calls a saving method for saving the button clicked and then also calls another method for popping up the dialog.
+
+
+
+ReactionTimerActivity:
+Responsible for initiating and passing control onto ReactionTimerMode class
+
+
+ReactionTimerMode:
+
+Initializes the click me button and its click listeners by using MyClickMe class. It uses android Handler object to switch click handlers and click me button colour so that after the waiting period ends, for the same listener another handler is activated that then processes the click and then calls methods to show a dialog telling the reaction time and also calls another method for saving the clicks.
+Dialog functionality is handled by three objects of the corresponding classes ReactionT_dialogEarly, ReactionT_dialogLater, ReactionT_dialogIntro.
+Saving latency functionality is handled by ReactionData.saveData static method.
+
+Statistics:
+Initializes ManageStats object and passes control over it. This class also has a handler for the button "EMAIL DATA". This handler calls EmailPage Activity.
+Also has handlers for both delete buttons. These handlers make a single method call to the corresponding methods of ManageStats class. It passes on EmailPage the Email Body text returned from ManageStats object.
+
+EmailPage:
+This activity takes in input for email Address and then uses the EmailManager to call an email App and sends the Email Body Text, subject and email Address.
+
+ManageStats:
+Collects data from ReactionData and BuzzerData objects and then turns the data(Long and Integer values) into String for displaying. It also generates the email Body text that ultimately is passed on Email Page.
+
+ReactionData:
+Uses DataIO to save and load latencies. It also has methods for finding statistics about the latencies and a method that prepares these data by calling those methods. Also has method to delete data from file.
+
+BuzzerData:
+Uses DataIO to save and load buzzer data. Also can delete from file
+
+DataIO:
+This is a generic class that can save and load any type of ArrayList. Problem was that Gson has a bug: when saving Integer or Long arraylists, it converts them to Double arraylists. Thats why I had to create another class called DataWrapper. Basically this class wraps any arrayList with DataWrapper for saving and loading. As this is a generic class it also knows what kind of data to unwrap.
+
+DataWrapper:
+Wraps around Arraylist. For Integer or Long, it converts them to double and uses the its genericness to identify the original type of arraylist and gives back that type of arraylist while unwrapping.
+
+Other classes:
+I have MyButton class, DialogYes_No class that manages the underlying functionality of buttons and dialogs by abstracting their original android classes. This allows extra functionality to be added to buttons and dialogs with less lines of code. 
+
+
